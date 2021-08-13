@@ -1,10 +1,12 @@
 const path = require('path');
 const express = require("express");
 const PORT =3001;
+const cors=require("cors")
 const app = express();
+app.use(cors())
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
+    res.send({ message: "Hello from server!" });
   });
 
   app.get('*', (req, res) => {
